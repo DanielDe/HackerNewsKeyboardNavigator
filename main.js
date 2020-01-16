@@ -57,7 +57,7 @@ document.addEventListener('keydown', event => {
   } else if (event.key === 'Enter') {
     if (!!selectedTR) {
       const anchor = selectedTR.querySelector('.storylink');
-      if (event.metaKey) {
+      if (event.ctrlKey) {
         window.open(anchor.href, '_blank');
       } else {
         anchor.click();
@@ -68,7 +68,7 @@ document.addEventListener('keydown', event => {
       const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
         anchor.textContent.endsWith('comments')
       );
-      if (event.metaKey) {
+      if (event.ctrlKey) {
         window.open(anchor.href, '_blank');
       } else {
         anchor.click();
@@ -79,7 +79,7 @@ document.addEventListener('keydown', event => {
       const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
         anchor.href.startsWith('https://news.ycombinator.com/user')
       );
-      if (event.metaKey) {
+      if (event.ctrlKey) {
         window.open(anchor.href, '_blank');
       } else {
         anchor.click();
