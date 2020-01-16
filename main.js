@@ -56,25 +56,34 @@ document.addEventListener('keydown', event => {
     selectTR(selectedTR);
   } else if (event.key === 'Enter') {
     if (!!selectedTR) {
-      const url = selectedTR.querySelector('.storylink').href;
-      window.open(url, event.metaKey ? '_blank' : undefined);
-      window.focus();
+      const anchor = selectedTR.querySelector('.storylink');
+      if (event.metaKey) {
+        window.open(anchor.href, '_blank');
+      } else {
+        anchor.click();
+      }
     }
   } else if (event.key === 'c') {
     if (!!selectedTR) {
-      const url = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
+      const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
         anchor.textContent.endsWith('comments')
-      ).href;
-      window.open(url, event.metaKey ? '_blank' : undefined);
-      window.focus();
+      );
+      if (event.metaKey) {
+        window.open(anchor.href, '_blank');
+      } else {
+        anchor.click();
+      }
     }
   } else if (event.key === 's') {
     if (!!selectedTR) {
-      const url = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
+      const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
         anchor.href.startsWith('https://news.ycombinator.com/user')
-      ).href;
-      window.open(url, event.metaKey ? '_blank' : undefined);
-      window.focus();
+      );
+      if (event.metaKey) {
+        window.open(anchor.href, '_blank');
+      } else {
+        anchor.click();
+      }
     }
   }
 });
