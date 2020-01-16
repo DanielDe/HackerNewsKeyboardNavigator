@@ -1,0 +1,13 @@
+{
+  "name": "Hacker News Keyboard Navigator",
+  "version": "1.0",
+  "description": "Navigate Hacker News with browser extensions",
+  "manifest_version": 2,
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://news.ycombinator.com/"],
+      "js": ["main.js"]
+    }
+  ]
+}
