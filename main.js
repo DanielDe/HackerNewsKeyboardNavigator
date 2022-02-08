@@ -3,7 +3,7 @@ const highlightColor = '#ff6500a3';
 const itemTRs = [...document.querySelectorAll('.athing')];
 let selectedTR = null;
 
-const isInViewport = element => {
+const isInViewport = (element) => {
   var bounding = element.getBoundingClientRect();
   return (
     bounding.top >= 0 &&
@@ -13,14 +13,14 @@ const isInViewport = element => {
   );
 };
 
-const first = list => list[0];
-const last = list => list[list.length - 1];
+const first = (list) => list[0];
+const last = (list) => list[list.length - 1];
 
-const deselectTR = tr => {
+const deselectTR = (tr) => {
   tr.style.backgroundColor = 'transparent';
 };
 
-const selectTR = tr => {
+const selectTR = (tr) => {
   tr.style.backgroundColor = highlightColor;
 
   if (!isInViewport(tr)) {
@@ -28,12 +28,12 @@ const selectTR = tr => {
   }
 };
 
-document.addEventListener('keydown', event => {
+document.addEventListener('keydown', (event) => {
   if (['j', 'k'].includes(event.key)) {
     if (!!selectedTR) {
       deselectTR(selectedTR);
     }
-    const currentTRIndex = itemTRs.findIndex(tr => tr === selectedTR);
+    const currentTRIndex = itemTRs.findIndex((tr) => tr === selectedTR);
 
     if (event.key === 'j') {
       if (currentTRIndex === -1) {
@@ -56,7 +56,7 @@ document.addEventListener('keydown', event => {
     selectTR(selectedTR);
   } else if (event.key === 'Enter') {
     if (!!selectedTR) {
-      const anchor = selectedTR.querySelector('.storylink');
+      const anchor = selectedTR.querySelector('.titlelink');
       if (event.ctrlKey) {
         window.open(anchor.href, '_blank');
       } else {
@@ -65,7 +65,7 @@ document.addEventListener('keydown', event => {
     }
   } else if (event.key === 'c') {
     if (!!selectedTR) {
-      const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
+      const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find((anchor) =>
         anchor.textContent.endsWith('comments')
       );
       if (event.ctrlKey) {
@@ -76,7 +76,7 @@ document.addEventListener('keydown', event => {
     }
   } else if (event.key === 's') {
     if (!!selectedTR) {
-      const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find(anchor =>
+      const anchor = [...selectedTR.nextSibling.querySelectorAll('a')].find((anchor) =>
         anchor.href.startsWith('https://news.ycombinator.com/user')
       );
       if (event.ctrlKey) {
