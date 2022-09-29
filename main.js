@@ -71,7 +71,7 @@ const registerHomepageHandlers = () => {
       selectTR(selectedTR);
     } else if (event.key === 'Enter') {
       if (!!selectedTR) {
-        const anchor = selectedTR.querySelector('.titlelink');
+        const anchor = selectedTR.querySelector('.title > .titleline > a');
         if (event.ctrlKey) {
           window.open(anchor.href, '_blank');
         } else {
